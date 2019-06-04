@@ -41,6 +41,7 @@ public class CloseOrderTask {
 
     }
 
+    // if shut down after setnx and expire => dead lock
     //@Scheduled(cron="0 */1 * * * ?")
     public void closeOrderTaskV2() {
         log.info("Close order task starts.");
@@ -64,8 +65,12 @@ public class CloseOrderTask {
             closeOrder(Const.REDIS_LOCK.CLOSE_ORDER_TASK_LOCK);
         }else{
             String lockValueStr = RedisShardedPoolUtil.get(Const.REDIS_LOCK.CLOSE_ORDER_TASK_LOCK);
+            // if current time > oldExpireTime, lock expired
             if(lockValueStr != null && System.currentTimeMillis() > Long.parseLong(lockValueStr)){
+                // newExpireTime = currentTime+expiration
                 String getSetResult = RedisShardedPoolUtil.getSet(Const.REDIS_LOCK.CLOSE_ORDER_TASK_LOCK,String.valueOf(System.currentTimeMillis()+lockTimeout));
+                // if old lock is null or old lock is the previous one
+                // if old lock is not the previous one, means it is set by another process
                 if(getSetResult == null || (getSetResult != null && StringUtils.equals(lockValueStr,getSetResult))){
                     closeOrder(Const.REDIS_LOCK.CLOSE_ORDER_TASK_LOCK);
                 }else{
@@ -104,14 +109,11 @@ public class CloseOrderTask {
     }
 
     private void closeOrder(String lockName) {
-        RedisShardedPoolUtil.expire(lockName, 5);
+        RedisShardedPoolUtil.expire(lockName, 50);
         log.info("Get{}, ThreadName:{}", lockName, Thread.currentThread().getName());
         int hour = Integer.parseInt(PropertiesUtil.getProperty("close.order.task.time.hour", "2"));
         iOrderService.closeOrder(hour);
         RedisShardedPoolUtil.del(lockName);
         log.info("Release{}, ThreadName:{}", lockName, Thread.currentThread().getName());
     }
-
-
-
 }
