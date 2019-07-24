@@ -18,7 +18,7 @@ public class ExceptionResolver implements HandlerExceptionResolver {
 
     @Override
     public ModelAndView resolveException(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) {
-        log.error("{} Exception",httpServletRequest.getRequestURI(), e);
+            log.error("{} Exception",httpServletRequest.getRequestURI(), e);
         ModelAndView modelAndView = new ModelAndView(new MappingJacksonJsonView());
         // if using jackson2.x, use MappingJackson2JsonView
         modelAndView.addObject("status",ResponseCode.ERROR.getCode());
