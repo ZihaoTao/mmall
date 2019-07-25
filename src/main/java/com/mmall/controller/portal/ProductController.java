@@ -68,4 +68,13 @@ public class ProductController {
                                                 @PathVariable(value = "orderBy") String orderBy) {
         return iProductService.getProductByKeywordCategory(null, categoryId, pageNum, pageSize, orderBy);
     }
+
+    @RequestMapping("all.do")
+    @ResponseBody
+    public ServerResponse<PageInfo> all(@RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
+                      @RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
+                      @RequestParam(value = "orderBy", defaultValue = "") String orderBy) {
+
+        return iProductService.getAllProduct(pageNum, pageSize, orderBy);
+    }
 }
