@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a90cea43-dd8b-4901-bf83-dbc39fe7473e" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources.prod/log4j.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/artifacts/mmall_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/mmall_war_exploded.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mmall.iml" beforeDir="false" afterPath="$PROJECT_DIR$/mmall.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mmall/service/impl/CategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mmall/service/impl/CategoryServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mmall/service/impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mmall/service/impl/ProductServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources.prod/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources.prod/logback.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -553,7 +549,7 @@
       <workItem from="1563953710740" duration="204000" />
       <workItem from="1563991292481" duration="4123000" />
       <workItem from="1571024860855" duration="748000" />
-      <workItem from="1571075548687" duration="6783000" />
+      <workItem from="1571075548687" duration="7158000" />
     </task>
     <servers />
   </component>
