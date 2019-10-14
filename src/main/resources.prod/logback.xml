@@ -43,24 +43,24 @@
         </filter>
     </appender>
 
-<!--    <appender name="flumeTest" class="com.teambytes.logback.flume.FlumeLogstashV1Appender">-->
-<!--        <flumeAgents>-->
-<!--            47.254.23.123:41414-->
-<!--        </flumeAgents>-->
-<!--        <flumeProperties>-->
-<!--            connect-timeout=4000;-->
-<!--            request-timeout=8000-->
-<!--        </flumeProperties>-->
-<!--        <batchSize>100</batchSize>-->
-<!--        <reportingWindow>1000</reportingWindow>-->
-<!--        <additionalAvroHeaders>-->
-<!--            dir=logs-->
-<!--        </additionalAvroHeaders>-->
-<!--        <application>47.254.23.123</application>-->
-<!--        <layout class="ch.qos.logback.classic.PatternLayout">-->
-<!--            <pattern>%d{HH:mm:ss.SSS} %-5level %logger{36} - \(%file:%line\) - %message%n%ex</pattern>-->
-<!--        </layout>-->
-<!--    </appender>-->
+    <appender name="flume" class="com.mmall.logback.flume.FlumeLogstashV1Appender">
+        <flumeAgents>
+            localhost:41414
+        </flumeAgents>
+        <flumeProperties>
+            connect-timeout=4000;
+            request-timeout=8000
+        </flumeProperties>
+        <batchSize>100</batchSize>
+        <reportingWindow>1000</reportingWindow>
+        <additionalAvroHeaders>
+            dir=logs
+        </additionalAvroHeaders>
+        <application>47.254.23.123</application>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%d{HH:mm:ss.SSS} %-5level %logger{36} - \(%file:%line\) - %message%n%ex</pattern>
+        </layout>
+    </appender>
 
 <!--    <appender name="flume" class="com.gilt.logback.flume.FlumeLogstashV1Appender">-->
 <!--        &lt;!&ndash; 此项是连接flume节点的ip和端口 &ndash;&gt;-->
@@ -86,6 +86,7 @@
     <logger name="com.mmall" additivity="false" level="INFO" >
         <appender-ref ref="mmall" />
         <appender-ref ref="console"/>
+        <appender-ref ref="flume" />
         <appender-ref ref="error"/>
     </logger>
 
