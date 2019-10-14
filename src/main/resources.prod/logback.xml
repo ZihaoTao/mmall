@@ -43,7 +43,7 @@
         </filter>
     </appender>
 
-    <appender name="flume" class="com.mmall.logback.flume.FlumeLogstashV1Appender">
+    <appender name="flume" class="com.teambytes.logback.flume.FlumeLogstashV1Appender">
         <flumeAgents>
             localhost:41414
         </flumeAgents>
