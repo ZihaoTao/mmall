@@ -24,7 +24,6 @@
         </encoder>
     </appender>
 
-
     <appender name="error" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <!--<File>d:/mmalllog/error.log</File>-->
         <File>${LOG_HOME}/error.log</File>
@@ -44,9 +43,50 @@
         </filter>
     </appender>
 
+    <appender name="flumeTest" class="com.teambytes.logback.flume.FlumeLogstashV1Appender">
+        <flumeAgents>
+            47.254.23.123:41414
+        </flumeAgents>
+        <flumeProperties>
+            connect-timeout=4000;
+            request-timeout=8000
+        </flumeProperties>
+        <batchSize>100</batchSize>
+        <reportingWindow>1000</reportingWindow>
+        <additionalAvroHeaders>
+            myHeader = myValue
+        </additionalAvroHeaders>
+        <application>mmall</application>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%d{HH:mm:ss.SSS} %-5level %logger{36} - \(%file:%line\) - %message%n%ex</pattern>
+        </layout>
+    </appender>
+
+<!--    <appender name="flume" class="com.gilt.logback.flume.FlumeLogstashV1Appender">-->
+<!--        &lt;!&ndash; 此项是连接flume节点的ip和端口 &ndash;&gt;-->
+<!--        <flumeAgents>${flume.agents}</flumeAgents>-->
+<!--        <flumeProperties>connect-timeout=4000;request-timeout=8000</flumeProperties>-->
+<!--        <batchSize>100</batchSize>-->
+<!--        <reportingWindow>1000</reportingWindow>-->
+<!--        &lt;!&ndash; 此项配置avro头部信息，dir标识目录 &ndash;&gt;-->
+<!--        <additionalAvroHeaders>dir=logs</additionalAvroHeaders>-->
+<!--        &lt;!&ndash; 此项配置当前应用 &ndash;&gt;-->
+<!--        <application>${domain}</application>-->
+<!--        <filter class="ch.qos.logback.classic.filter.LevelFilter">-->
+<!--            <level>TRACE</level>-->
+<!--            <onMatch>ACCEPT</onMatch>-->
+<!--            <onMismatch>DENY</onMismatch>-->
+<!--        </filter>-->
+<!--    </appender>-->
+
+<!--    <logger name="com.dzmsoft.framework.log.service.impl.LogServiceImpl"  level="INFO" >-->
+<!--        <appender-ref ref="flume" />-->
+<!--    </logger>-->
+
     <logger name="com.mmall" additivity="false" level="INFO" >
         <appender-ref ref="mmall" />
         <appender-ref ref="console"/>
+        <appender-ref ref="flumeTest"/>
         <appender-ref ref="error"/>
     </logger>
 

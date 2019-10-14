@@ -42,6 +42,17 @@
           <element id="library" level="project" name="Maven: com.google.guava:guava:20.0" />
           <element id="library" level="project" name="Maven: org.apache.commons:commons-lang3:3.5" />
           <element id="library" level="project" name="Maven: commons-collections:commons-collections:3.2.1" />
+          <element id="library" level="project" name="Maven: com.teambytes.logback:logback-flume-appender_2.10:0.0.9" />
+          <element id="library" level="project" name="Maven: org.scala-lang:scala-library:2.10.4" />
+          <element id="library" level="project" name="Maven: org.apache.flume:flume-ng-sdk:1.5.0.1" />
+          <element id="library" level="project" name="Maven: org.apache.avro:avro-ipc:1.7.3" />
+          <element id="library" level="project" name="Maven: org.mortbay.jetty:jetty:6.1.26" />
+          <element id="library" level="project" name="Maven: org.mortbay.jetty:jetty-util:6.1.26" />
+          <element id="library" level="project" name="Maven: org.apache.velocity:velocity:1.7" />
+          <element id="library" level="project" name="Maven: io.netty:netty:3.5.12.Final" />
+          <element id="library" level="project" name="Maven: org.apache.thrift:libthrift:0.7.0" />
+          <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpclient:4.0.1" />
+          <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpcore:4.0.1" />
           <element id="library" level="project" name="Maven: junit:junit:4.12" />
           <element id="library" level="project" name="Maven: joda-time:joda-time:2.3" />
           <element id="library" level="project" name="Maven: org.hashids:hashids:1.0.1" />
