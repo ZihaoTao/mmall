@@ -197,7 +197,6 @@ public class ProductServiceImpl implements IProductService{
             if(category == null && StringUtils.isBlank(keyword)) {
                 // this is not an error, should return a blank list
                 PageHelper.startPage(pageNum, pageSize);
-                List<Product> list = productMapper.selectList();
                 List<ProductListVo> productListVosList = Lists.newArrayList();
                 PageInfo pageResult = new PageInfo(productListVosList);
                 //pageResult.setList(productListVosList); don't need set if it is a blank list

@@ -25,11 +25,9 @@
     </appender>
 
     <appender name="error" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <!--<File>d:/mmalllog/error.log</File>-->
         <File>${LOG_HOME}/error.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${LOG_HOME}/error.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
-            <!--<fileNamePattern>d:/mmalllog/error.log.%d{yyyy-MM-dd}.gz</fileNamePattern>-->
             <append>true</append>
             <maxHistory>10</maxHistory>
         </rollingPolicy>
@@ -43,49 +41,13 @@
         </filter>
     </appender>
 
-    <appender name="flume" class="com.teambytes.logback.flume.FlumeLogstashV1Appender">
-        <!-- 此项是连接flume节点的ip和端口 -->
-        <flumeAgents>localhost:41414</flumeAgents>
-        <flumeProperties>connect-timeout=4000;request-timeout=8000</flumeProperties>
-        <batchSize>10</batchSize>
-        <reportingWindow>1000</reportingWindow>
-        <!-- 此项配置avro头部信息，dir标识目录 -->
-        <additionalAvroHeaders>dir=logs</additionalAvroHeaders>
-        <!-- 此项配置当前应用 -->
-        <application>47.254.23.123</application>
-        <layout class="ch.qos.logback.classic.PatternLayout">
-            <pattern>[%d{HH:mm:ss.SSS}][%p][%c{40}][%t] %m%n</pattern>
-        </layout>
-    </appender>
-
     <logger name="com.mmall" additivity="false" level="INFO" >
         <appender-ref ref="mmall" />
         <appender-ref ref="console"/>
-        <appender-ref ref="flume" />
         <appender-ref ref="error"/>
     </logger>
 
-
-
-    <!-- geelynote mybatis log 日志 -->
-
     <logger name="com.mmall.dao" level="DEBUG"/>
-
-    <!--<logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" level="DEBUG" >-->
-    <!--<appender-ref ref="console"/>-->
-    <!--</logger>-->
-
-    <!--<logger name="java.sql.Connection" level="DEBUG">-->
-    <!--<appender-ref ref="console"/>-->
-    <!--</logger>-->
-    <!--<logger name="java.sql.Statement" level="DEBUG">-->
-    <!--<appender-ref ref="console"/>-->
-    <!--</logger>-->
-
-    <!--<logger name="java.sql.PreparedStatement" level="DEBUG">-->
-    <!--<appender-ref ref="console"/>-->
-    <!--</logger>-->
-
 
     <root level="DEBUG">
         <appender-ref ref="console"/>
