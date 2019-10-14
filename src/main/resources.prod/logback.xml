@@ -44,44 +44,24 @@
     </appender>
 
     <appender name="flume" class="com.teambytes.logback.flume.FlumeLogstashV1Appender">
-        <flumeAgents>
-            localhost:41414
-        </flumeAgents>
-        <flumeProperties>
-            connect-timeout=4000;
-            request-timeout=8000
-        </flumeProperties>
+        <!-- 此项是连接flume节点的ip和端口 -->
+        <flumeAgents>localhost:41414</flumeAgents>
+        <flumeProperties>connect-timeout=4000;request-timeout=8000</flumeProperties>
         <batchSize>100</batchSize>
         <reportingWindow>1000</reportingWindow>
-        <additionalAvroHeaders>
-            dir=logs
-        </additionalAvroHeaders>
+        <!-- 此项配置avro头部信息，dir标识目录 -->
+        <additionalAvroHeaders>dir=logs</additionalAvroHeaders>
+        <!-- 此项配置当前应用 -->
         <application>47.254.23.123</application>
         <layout class="ch.qos.logback.classic.PatternLayout">
             <pattern>%d{HH:mm:ss.SSS} %-5level %logger{36} - \(%file:%line\) - %message%n%ex</pattern>
         </layout>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
     </appender>
-
-<!--    <appender name="flume" class="com.gilt.logback.flume.FlumeLogstashV1Appender">-->
-<!--        &lt;!&ndash; 此项是连接flume节点的ip和端口 &ndash;&gt;-->
-<!--        <flumeAgents>${flume.agents}</flumeAgents>-->
-<!--        <flumeProperties>connect-timeout=4000;request-timeout=8000</flumeProperties>-->
-<!--        <batchSize>100</batchSize>-->
-<!--        <reportingWindow>1000</reportingWindow>-->
-<!--        &lt;!&ndash; 此项配置avro头部信息，dir标识目录 &ndash;&gt;-->
-<!--        <additionalAvroHeaders>dir=logs</additionalAvroHeaders>-->
-<!--        &lt;!&ndash; 此项配置当前应用 &ndash;&gt;-->
-<!--        <application>${domain}</application>-->
-<!--        <filter class="ch.qos.logback.classic.filter.LevelFilter">-->
-<!--            <level>TRACE</level>-->
-<!--            <onMatch>ACCEPT</onMatch>-->
-<!--            <onMismatch>DENY</onMismatch>-->
-<!--        </filter>-->
-<!--    </appender>-->
-
-<!--    <logger name="com.dzmsoft.framework.log.service.impl.LogServiceImpl"  level="INFO" >-->
-<!--        <appender-ref ref="flume" />-->
-<!--    </logger>-->
 
     <logger name="com.mmall" additivity="false" level="INFO" >
         <appender-ref ref="mmall" />
