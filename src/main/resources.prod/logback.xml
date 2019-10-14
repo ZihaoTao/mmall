@@ -54,9 +54,9 @@
         <batchSize>100</batchSize>
         <reportingWindow>1000</reportingWindow>
         <additionalAvroHeaders>
-            myHeader = myValue
+            dir=logs
         </additionalAvroHeaders>
-        <application>mmall</application>
+        <application>47.254.23.123</application>
         <layout class="ch.qos.logback.classic.PatternLayout">
             <pattern>%d{HH:mm:ss.SSS} %-5level %logger{36} - \(%file:%line\) - %message%n%ex</pattern>
         </layout>
