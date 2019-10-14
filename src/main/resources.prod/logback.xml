@@ -47,20 +47,15 @@
         <!-- 此项是连接flume节点的ip和端口 -->
         <flumeAgents>localhost:41414</flumeAgents>
         <flumeProperties>connect-timeout=4000;request-timeout=8000</flumeProperties>
-        <batchSize>100</batchSize>
+        <batchSize>10</batchSize>
         <reportingWindow>1000</reportingWindow>
         <!-- 此项配置avro头部信息，dir标识目录 -->
         <additionalAvroHeaders>dir=logs</additionalAvroHeaders>
         <!-- 此项配置当前应用 -->
         <application>47.254.23.123</application>
         <layout class="ch.qos.logback.classic.PatternLayout">
-            <pattern>%d{HH:mm:ss.SSS} %-5level %logger{36} - \(%file:%line\) - %message%n%ex</pattern>
+            <pattern>[%d{HH:mm:ss.SSS}][%p][%c{40}][%t] %m%n</pattern>
         </layout>
-        <filter class="ch.qos.logback.classic.filter.LevelFilter">
-            <level>INFO</level>
-            <onMatch>ACCEPT</onMatch>
-            <onMismatch>DENY</onMismatch>
-        </filter>
     </appender>
 
     <logger name="com.mmall" additivity="false" level="INFO" >
